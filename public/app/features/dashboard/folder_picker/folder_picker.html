@@ -1,6 +1,6 @@
 <div class="gf-form-inline">
   <div class="gf-form">
-    <label class="gf-form-label {{ctrl.labelClass}}">Folder</label>
+    <label class="gf-form-label {{ctrl.labelClass}}">文件夹</label>
     <div class="dropdown" ng-hide="ctrl.createNewFolder">
       <gf-form-dropdown model="ctrl.folder"
         get-options="ctrl.getOptions($query)"
@@ -19,12 +19,12 @@
     <button class="btn btn-inverse"
       ng-click="ctrl.createFolder($event)"
       ng-disabled="!ctrl.newFolderNameTouched || ctrl.hasValidationError">
-      <i class="fa fa-fw fa-save"></i>&nbsp;Create
+      <i class="fa fa-fw fa-save"></i>&nbsp;创建
     </button>
   </div>
   <div class="gf-form" ng-if="ctrl.createNewFolder">
     <button class="btn btn-inverse" ng-click="ctrl.cancelCreateFolder($event)">
-      Cancel
+      取消
   </button>
   </div>
 </div>

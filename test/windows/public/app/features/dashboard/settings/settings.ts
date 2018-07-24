@@ -55,22 +55,22 @@ export class SettingsCtrl {
 
     if (this.dashboard.meta.canEdit) {
       this.sections.push({
-        title: 'General',
+        title: '通用',
         id: 'settings',
         icon: 'gicon gicon-preferences',
       });
       this.sections.push({
-        title: 'Annotations',
+        title: '注释',
         id: 'annotations',
         icon: 'gicon gicon-annotation',
       });
       this.sections.push({
-        title: 'Variables',
+        title: '变量',
         id: 'templating',
         icon: 'gicon gicon-variable',
       });
       this.sections.push({
-        title: 'Links',
+        title: '链接',
         id: 'links',
         icon: 'gicon gicon-link',
       });
@@ -78,7 +78,7 @@ export class SettingsCtrl {
 
     if (this.dashboard.id && this.dashboard.meta.canSave) {
       this.sections.push({
-        title: 'Versions',
+        title: '版本',
         id: 'versions',
         icon: 'fa fa-fw fa-history',
       });
@@ -86,7 +86,7 @@ export class SettingsCtrl {
 
     if (this.dashboard.id && this.dashboard.meta.canAdmin) {
       this.sections.push({
-        title: 'Permissions',
+        title: '权限',
         id: 'permissions',
         icon: 'fa fa-fw fa-lock',
       });
@@ -94,14 +94,14 @@ export class SettingsCtrl {
 
     if (this.dashboard.meta.canMakeEditable) {
       this.sections.push({
-        title: 'General',
+        title: '通用',
         icon: 'gicon gicon-preferences',
         id: 'make_editable',
       });
     }
 
     this.sections.push({
-      title: 'JSON Model',
+      title: 'JSON模型',
       id: 'dashboard_json',
       icon: 'gicon gicon-json',
     });
@@ -187,17 +187,17 @@ export class SettingsCtrl {
     });
 
     if (alerts > 0) {
-      confirmText = 'DELETE';
-      text2 = `This dashboard contains ${alerts} alerts. Deleting this dashboard will also delete those alerts`;
+      confirmText = '删除';
+      text2 = `此仪表板包含 ${alerts} 告警。 删除此仪表板也会删除这些告警`;
     }
 
     appEvents.emit('confirm-modal', {
-      title: 'Delete',
-      text: 'Do you want to delete this dashboard?',
+      title: '删除',
+      text: '要删除此仪表板吗？',
       text2: text2,
       icon: 'fa-trash',
       confirmText: confirmText,
-      yesText: 'Delete',
+      yesText: '删除',
       onConfirm: () => {
         this.dashboard.meta.canSave = false;
         this.deleteDashboardConfirmed();
@@ -207,7 +207,7 @@ export class SettingsCtrl {
 
   deleteDashboardConfirmed() {
     this.backendSrv.deleteDashboard(this.dashboard.uid).then(() => {
-      appEvents.emit('alert-success', ['Dashboard Deleted', this.dashboard.title + ' has been deleted']);
+      appEvents.emit('alert-success', ['仪表板已删除', this.dashboard.title + ' 已删除']);
       this.$location.url('/');
     });
   }

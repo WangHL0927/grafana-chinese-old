@@ -62,13 +62,13 @@ export class FolderSettingsCtrl {
     }
 
     appEvents.emit('confirm-modal', {
-      title: 'Delete',
-      text: `Do you want to delete this folder and all its dashboards?`,
+      title: '删除',
+      text: `要删除此文件夹及其所有仪表板吗？`,
       icon: 'fa-trash',
-      yesText: 'Delete',
+      yesText: '删除',
       onConfirm: () => {
         return this.backendSrv.deleteFolder(this.uid).then(() => {
-          appEvents.emit('alert-success', ['Folder Deleted', `${this.folder.title} has been deleted`]);
+          appEvents.emit('alert-success', ['文件夹已删除', `${this.folder.title} 已被删除`]);
           this.$location.url('dashboards');
         });
       },
@@ -80,10 +80,10 @@ export class FolderSettingsCtrl {
       err.isHandled = true;
 
       appEvents.emit('confirm-modal', {
-        title: 'Conflict',
-        text: 'Someone else has updated this folder.',
-        text2: 'Would you still like to save this folder?',
-        yesText: 'Save & Overwrite',
+        title: '冲突',
+        text: '其他人已更新此文件夹。',
+        text2: '你还想保存这个文件夹吗？',
+        yesText: '保存 & 覆盖',
         icon: 'fa-warning',
         onConfirm: () => {
           this.backendSrv.updateFolder(this.folder, { overwrite: true });

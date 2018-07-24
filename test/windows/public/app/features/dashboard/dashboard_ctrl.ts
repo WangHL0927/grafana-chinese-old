@@ -40,7 +40,7 @@ export class DashboardCtrl implements PanelContainer {
     try {
       this.setupDashboardInternal(data);
     } catch (err) {
-      this.onInitFailed(err, 'Dashboard init failed', true);
+      this.onInitFailed(err, '仪表板初始化失败', true);
     }
   }
 
@@ -57,7 +57,7 @@ export class DashboardCtrl implements PanelContainer {
     this.variableSrv
       .init(dashboard)
       // template values failes are non fatal
-      .catch(this.onInitFailed.bind(this, 'Templating init failed', false))
+      .catch(this.onInitFailed.bind(this, '模板初始化失败', false))
       // continue
       .finally(() => {
         this.dashboard = dashboard;
@@ -76,7 +76,7 @@ export class DashboardCtrl implements PanelContainer {
 
         this.$scope.appEvent('dashboard-initialized', dashboard);
       })
-      .catch(this.onInitFailed.bind(this, 'Dashboard init failed', true));
+      .catch(this.onInitFailed.bind(this, '仪表板初始化失败', true));
   }
 
   onInitFailed(msg, fatal, err) {
@@ -93,7 +93,7 @@ export class DashboardCtrl implements PanelContainer {
     // protect against  recursive fallbacks
     if (fatal && !this.loadedFallbackDashboard) {
       this.loadedFallbackDashboard = true;
-      this.setupDashboard({ dashboard: { title: 'Dashboard Init failed' } });
+      this.setupDashboard({ dashboard: { title: '仪表板初始化失败' } });
     }
   }
 
@@ -147,17 +147,17 @@ export class DashboardCtrl implements PanelContainer {
       var text2, confirmText;
 
       if (panel.alert) {
-        text2 = 'Panel includes an alert rule, removing panel will also remove alert rule';
-        confirmText = 'YES';
+        text2 = '面板包含告警规则，删除面板也将删除告警规则';
+        confirmText = '确认';
       }
 
       this.$scope.appEvent('confirm-modal', {
-        title: 'Remove Panel',
-        text: 'Are you sure you want to remove this panel?',
+        title: '删除面板',
+        text: '您确定要删除此面板吗？',
         text2: text2,
         icon: 'fa-trash',
         confirmText: confirmText,
-        yesText: 'Remove',
+        yesText: '删除',
         onConfirm: () => {
           this.removePanel(panel, false);
         },

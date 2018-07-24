@@ -18,18 +18,18 @@ export class ShareModalCtrl {
       $scope.tabs = [{ title: '链接', src: 'shareLink.html' }];
 
       if ($scope.modeSharePanel) {
-        $scope.modalTitle = 'Share Panel';
+        $scope.modalTitle = '分享面板';
         $scope.tabs.push({ title: 'Embed', src: 'shareEmbed.html' });
       } else {
-        $scope.modalTitle = 'Share';
+        $scope.modalTitle = '分享';
       }
 
       if (!$scope.dashboard.meta.isSnapshot) {
-        $scope.tabs.push({ title: 'Snapshot', src: 'shareSnapshot.html' });
+        $scope.tabs.push({ title: '快照', src: 'shareSnapshot.html' });
       }
 
       if (!$scope.dashboard.meta.isSnapshot && !$scope.modeSharePanel) {
-        $scope.tabs.push({ title: 'Export', src: 'shareExport.html' });
+        $scope.tabs.push({ title: '导出', src: 'shareExport.html' });
       }
 
       $scope.buildUrl();

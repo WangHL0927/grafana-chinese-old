@@ -13,16 +13,16 @@ export class ShareSnapshotCtrl {
     $scope.step = 1;
 
     $scope.expireOptions = [
-      { text: '1 Hour', value: 60 * 60 },
-      { text: '1 Day', value: 60 * 60 * 24 },
-      { text: '7 Days', value: 60 * 60 * 24 * 7 },
-      { text: 'Never', value: 0 },
+      { text: '1 小时', value: 60 * 60 },
+      { text: '1 天', value: 60 * 60 * 24 },
+      { text: '7 天', value: 60 * 60 * 24 * 7 },
+      { text: '从不', value: 0 },
     ];
 
     $scope.accessOptions = [
-      { text: 'Anyone with the link', value: 1 },
-      { text: 'Organization users', value: 2 },
-      { text: 'Public on the web', value: 3 },
+      { text: '拥有链接的任何人', value: 1 },
+      { text: '组织用户', value: 2 },
+      { text: '在网上公开', value: 3 },
     ];
 
     $scope.init = function() {
