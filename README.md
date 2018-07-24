@@ -10,7 +10,9 @@ tags: GitHub grafana
 ## Grafana中文汉化版本
 
 作者：whl
+
 email：w958660278@163.com
+
 个人网站：[https://wanghualong.cn][2]
 
 
@@ -24,7 +26,7 @@ Grafana v5.2.1 (commit: 2040f61)
 
 **使用前请确认Grafana版本是否一致，Grafana版本更新方法请参考官网教程。**
 
-复制`public`目录到grafana安装目录替换(一般在`/usr/share/grafana`，建议先备份原有文件)，替换完成后重启Grafana服务即可。
+复制`public`目录到Grafana资源目录(一般在`/usr/share/grafana`，建议先备份原有文件)，替换完成后重启Grafana服务即可。
 
 
 ## 测试教程
@@ -35,9 +37,12 @@ Grafana v5.2.1 (commit: 2040f61)
 [https://wanghualong.cn/archives/44/][1]
 
 ## 更新动态
-    持续更新中。。。
-    部分界面文本内容尚未找到源码所在位置。。。恳请大家发现源码文件位置后留言赐教。
-    作者个人翻译水平有限，错误的地方请留言指正。
+
+持续更新中。。。
+
+部分界面文本内容尚未找到源码所在位置。。。恳请大家发现源码文件位置后留言赐教。
+
+作者个人翻译水平有限，错误的地方请留言指正。
     
 
 
