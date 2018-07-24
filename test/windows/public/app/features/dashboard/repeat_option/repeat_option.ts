@@ -24,7 +24,7 @@ function dashRepeatOptionDirective(variableSrv) {
 
       if (scope.variables.length === 0) {
         scope.variables.unshift({
-          text: '找不到模板变量',
+          text: 'No template variables found',
           value: null,
         });
       }

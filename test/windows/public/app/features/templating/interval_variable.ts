@@ -89,5 +89,5 @@ export class IntervalVariable implements Variable {
 variableTypes['interval'] = {
   name: 'Interval',
   ctor: IntervalVariable,
-  description: 'Define a timespan interval (ex 1m, 1h, 1d)',
+  description: '定义时间间隔 (ex 1m, 1h, 1d)',
 };

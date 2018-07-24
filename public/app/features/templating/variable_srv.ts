@@ -85,7 +85,7 @@ export class VariableSrv {
     var ctor = variableTypes[model.type].ctor;
     if (!ctor) {
       throw {
-        message: 'Unable to find variable constructor for ' + model.type,
+        message: '无法找到变量构造函数 ' + model.type,
       };
     }
 
@@ -209,7 +209,24 @@ export class VariableSrv {
         return op.text === urlValue || op.value === urlValue;
       });
 
-      option = option || { text: urlValue, value: urlValue };
+      let defaultText = urlValue;
+      let defaultValue = urlValue;
+
+      if (!option && _.isArray(urlValue)) {
+        defaultText = [];
+
+        for (let n = 0; n < urlValue.length; n++) {
+          let t = _.find(variable.options, op => {
+            return op.value === urlValue[n];
+          });
+
+          if (t) {
+            defaultText.push(t.text);
+          }
+        }
+      }
+
+      option = option || { text: defaultText, value: defaultValue };
       return variable.setValue(option);
     });
   }

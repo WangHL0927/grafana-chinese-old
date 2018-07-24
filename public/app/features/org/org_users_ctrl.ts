@@ -57,7 +57,7 @@ export class OrgUsersCtrl {
   removeUser(user) {
     this.$scope.appEvent('confirm-modal', {
       title: '删除',
-      text: '你确定要删除用户' + user.login + '吗？',
+      text: '您确定要删除用户' + user.login + '吗？',
       yesText: '删除',
       icon: 'fa-warning',
       onConfirm: () => {

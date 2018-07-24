@@ -1,28 +1,28 @@
 <page-header model="navModel"></page-header>
 
 <div class="page-container page-body">
-	<h3 class="page-sub-heading">您好 {{greeting}}.</h3>
+	<h3 class="page-sub-heading">你好 {{greeting}}。</h3>
 
 	<div class="modal-tagline p-b-2">
-		<em>{{invitedBy}}</em> 已邀请您加入Grafana组织 <span class="highlight-word">{{contextSrv.user.orgName}}</span></br>请填写以下内容以接受邀请：
+		<em>{{invitedBy}}</em> 邀请您加入Grafana和该组织 <span class="highlight-word">{{contextSrv.user.orgName}}</span></br>请完成以下操作以接受您的邀请并继续：
 	</div>
 
 	<form name="inviteForm" class="login-form gf-form-group">
 		<div class="gf-form">
-			<span class="gf-form-label width-7">邮箱</span>
+			<span class="gf-form-label width-7">电子邮件</span>
 			<input type="email" name="email" class="gf-form-input max-width-21" required ng-model='formModel.email' placeholder="Email">
 		</div>
 		<div class="gf-form">
-			<span class="gf-form-label width-7">姓名</span>
-			<input type="text" name="name" class="gf-form-input max-width-21" ng-model='formModel.name' placeholder="Name (optional)">
+			<span class="gf-form-label width-7">名称</span>
+			<input type="text" name="name" class="gf-form-input max-width-21" ng-model='formModel.name' placeholder="名称 (可选)">
 		</div>
 		<div class="gf-form">
 			<span class="gf-form-label width-7">用户名</span>
-			<input type="text" name="username" class="gf-form-input max-width-21" required ng-model='formModel.username' placeholder="Username">
+			<input type="text" name="username" class="gf-form-input max-width-21" required ng-model='formModel.username' placeholder="用户名">
 		</div>
 		<div class="gf-form">
 			<span class="gf-form-label width-7">密码</span>
-			<input type="password" name="password" class="gf-form-input max-width-21" required ng-model="formModel.password" id="inputPassword" placeholder="password">
+			<input type="password" name="password" class="gf-form-input max-width-21" required ng-model="formModel.password" id="inputPassword" placeholder="密码">
 		</div>
 
 		<div style="margin-left: 7.5rem; width: 254px;">
@@ -31,7 +31,7 @@
 
 		<div class="gf-form-button-row">
 			<button type="submit" class="btn btn-success" ng-click="submit();" ng-disable="!inviteForm.$valid">
-				注册
+        注册
 			</button>
 		</div>
 	</form>

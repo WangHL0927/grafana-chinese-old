@@ -9,20 +9,18 @@
               bs-typeahead="getSuggestUrls"  min-length="0"
               ng-pattern="/^(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?$/" required></input>
         <info-popover mode="right-absolute">
-          <p>指定一个完整的HTTP URL（例如http：// your_server：8080）</p>
+          <p>指定完整 HTTP URL (例如 http://your_server:8080)</p>
           <span ng-show="current.access === 'direct'">
-            您的访问方式是<em>浏览器</em>，这意味着网址
-             需要通过浏览器访问。
+            您的访问方法是 <em>浏览器</em>，这意味着URL链接需要可以从浏览器访问。
           </span>
           <span ng-show="current.access === 'proxy'">
-            您的访问方式是<em>服务器</em>，这意味着URL
-             需要通过grafana后端/服务器访问。
+            您的访问方法是 <em>服务器</em>，这意味着URL链接需要可以从grafana后端/服务器访问。
           </span>
         </info-popover>
       </div>
     </div>
 
-    <div class="gf-form-inline">
+    <div class="gf-form-inline" ng-if="showAccessOption">
       <div class="gf-form max-width-30">
         <span class="gf-form-label width-7">访问</span>
         <div class="gf-form-select-wrapper max-width-24">
@@ -30,36 +28,35 @@
         </div>
       </div>
       <div class="gf-form">
-        <label class="gf-form-label query-keyword pointer" ng-click="ctrl.showAccessHelp = !ctrl.showAccessHelp">
-          Help&nbsp;
+        <label class="gf-form-label query-keyword pointer" ng-click="toggleAccessHelp()">
+          帮助
           <i class="fa fa-caret-down" ng-show="ctrl.showAccessHelp"></i>
           <i class="fa fa-caret-right" ng-hide="ctrl.showAccessHelp">&nbsp;</i>
         </label>
       </div>
     </div>
 
-    <div class="alert alert-info" ng-show="ctrl.showAccessHelp">
+    <div class="alert alert-info" ng-show="showAccessHelp">
       <div class="alert-body">
         <p>
           访问模式控制如何处理对数据源的请求。
-                     如果没有其他要求，<strong><i>Server</i></strong>应该是首选的方式。
+          如果没有其他说明，<strong><i>服务器</i></strong>应该是首选方式。
         </p>
-        <div class="alert-title">服务器访问模式（默认）:</div>
+        <div class="alert-title">服务器访问模式（默认）：</div>
         <p>
-          所有请求都将从浏览器发送到Grafana后端/服务器，后者将转发请求到数据源
-                     并绕过可能的跨源资源共享（CORS）要求。
-                     如果您选择此访问模式，则需要从grafana后端/服务器访问该URL。
+          所有请求都将从浏览器发送到Grafana后端/服务器，后者又将请求转发到数据源，通过这种方式规避可能的跨域资源共享（CORS）请求。
+          如果选择此访问模式，则需要从grafana后端/服务器访问URL。
         </p>
         <div class="alert-title">浏览器访问模式：</div>
         <p>
-          所有请求都将从浏览器直接发送到数据源，并可能会受到影响
-                     跨源资源共享（CORS）要求。 如果您选择此访问模式，则需要从浏览器访问该URL。
+          所有请求都将从浏览器直接发送到数据源，并可能受到跨域资源共享（CORS）要求。
+          如果选择此访问模式，则需要从浏览器访问该URL。
         </p>
       </div>
     </div>
   </div>
 
-  <h3 class="page-heading">认证</h3>
+  <h3 class="page-heading">验证</h3>
   <div class="gf-form-group">
     <div class="gf-form-inline">
       <gf-form-switch class="gf-form" label="Basic Auth" checked="current.basicAuth" label-class="width-8" switch-class="max-width-6"></gf-form-switch>
@@ -77,7 +74,7 @@
 </div>
 
 <div class="gf-form-group" ng-if="current.basicAuth">
-  <h6>基本认证信息</h6>
+  <h6>基础验证信息</h6>
   <div class="gf-form" ng-if="current.basicAuth">
     <span class="gf-form-label width-7">
       User
@@ -95,13 +92,13 @@
 
 <div class="gf-form-group" ng-if="(current.jsonData.tlsAuth || current.jsonData.tlsAuthWithCACert) && current.access=='proxy'">
   <div class="gf-form">
-    <h6>TLS Auth Details</h6>
-    <info-popover mode="header">TLS Certs are encrypted and stored in the Grafana database.</info-popover>
+    <h6>TLS Auth 详细信息</h6>
+    <info-popover mode="header">TLS Certs已加密并存储在Grafana数据库中。</info-popover>
   </div>
   <div ng-if="current.jsonData.tlsAuthWithCACert">
     <div class="gf-form-inline">
       <div class="gf-form gf-form--v-stretch">
-        <label class="gf-form-label width-7">CA Cert</label>
+        <label class="gf-form-label width-7">CA证书</label>
       </div>
       <div class="gf-form gf-form--grow" ng-if="!current.secureJsonFields.tlsCACert">
         <textarea rows="7" class="gf-form-input gf-form-textarea" ng-model="current.secureJsonData.tlsCACert" placeholder="Begins with -----BEGIN CERTIFICATE-----"></textarea>
@@ -109,7 +106,7 @@
 
       <div class="gf-form" ng-if="current.secureJsonFields.tlsCACert">
         <input type="text" class="gf-form-input max-width-12" disabled="disabled" value="configured">
-        <a class="btn btn-secondary gf-form-btn" href="#" ng-click="current.secureJsonFields.tlsCACert = false">reset</a>
+        <a class="btn btn-secondary gf-form-btn" href="#" ng-click="current.secureJsonFields.tlsCACert = false">重置</a>
       </div>
     </div>
   </div>
@@ -124,7 +121,7 @@
       </div>
       <div class="gf-form" ng-if="current.secureJsonFields.tlsClientCert">
         <input type="text" class="gf-form-input max-width-12" disabled="disabled" value="configured">
-        <a class="btn btn-secondary gf-form-btn" href="#" ng-click="current.secureJsonFields.tlsClientCert = false">reset</a>
+        <a class="btn btn-secondary gf-form-btn" href="#" ng-click="current.secureJsonFields.tlsClientCert = false">重置</a>
       </div>
     </div>
 
@@ -137,13 +134,13 @@
       </div>
       <div class="gf-form" ng-if="current.secureJsonFields.tlsClientKey">
         <input type="text" class="gf-form-input max-width-12" disabled="disabled" value="configured">
-        <a class="btn btn-secondary gf-form-btn" href="#" ng-click="current.secureJsonFields.tlsClientKey = false">reset</a>
+        <a class="btn btn-secondary gf-form-btn" href="#" ng-click="current.secureJsonFields.tlsClientKey = false">重置</a>
       </div>
     </div>
   </div>
 </div>
 
-<h3 class="page-heading" ng-if="current.access=='proxy'">Advanced HTTP Settings</h3>
+<h3 class="page-heading" ng-if="current.access=='proxy'">高级HTTP设置</h3>
 <div class="gf-form-group" ng-if="current.access=='proxy'">
   <div class="gf-form-inline">
     <div class="gf-form">
@@ -151,7 +148,7 @@
       <bootstrap-tagsinput ng-model="current.jsonData.keepCookies" tagclass="label label-tag" placeholder="Add Name">
       </bootstrap-tagsinput>
       <info-popover mode="right-absolute">
-        Grafana代理默认删除转发的cookie。 按名称指定应该转发给数据源的Cookie。
+        Grafana Proxy默认删除转发的cookie。 按名称指定应转发到数据源的cookie。
       </info-popover>
     </div>
   </div>

@@ -33,7 +33,7 @@ const template = `
 							当前
 						</span>
 						<a ng-click="ctrl.setUsingOrg(org)" class="btn btn-inverse btn-mini" ng-show="org.orgId !== ctrl.currentOrgId">
-							切换至
+							切换到
 						</a>
 					</td>
 				</tr>

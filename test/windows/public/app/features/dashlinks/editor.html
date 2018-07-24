@@ -8,7 +8,7 @@
   <div ng-if="ctrl.dashboard.links.length === 0">
     <div class="empty-list-cta">
       <div class="empty-list-cta__title">
-        没有添加仪表板链接
+        尚未添加仪表板链接
       </div>
       <a ng-click="ctrl.setupNew()" class="empty-list-cta__button btn btn-xlarge btn-success">
         <i class="gicon gicon-add-link"></i>
@@ -17,7 +17,7 @@
       <div class="grafana-info-box">
         <h5>什么是仪表板链接？</h5>
         <p>
-          仪表板链接允许您将链接直接放置在仪表板标题下方，以便将其链接到其他仪表板和网站。
+          仪表板链接允许您直接在仪表板标题下方放置指向其他仪表板和网站的链接。
         </p>
       </div>
     </div>
@@ -82,7 +82,7 @@
       </div>
 
       <div class="gf-form" ng-show="ctrl.link.type === 'dashboards'">
-        <span class="gf-form-label width-8">使用标签</span>
+        <span class="gf-form-label width-8">With tags</span>
         <bootstrap-tagsinput ng-model="ctrl.link.tags" tagclass="label label-tag" placeholder="add tags" style="margin-right: .25rem"></bootstrap-tagsinput>
       </div>
 
@@ -94,7 +94,7 @@
       </div>
       <div ng-show="ctrl.link.type === 'link'">
         <div class="gf-form">
-          <li class="gf-form-label width-8">链接</li>
+          <li class="gf-form-label width-8">Url</li>
           <input type="text" ng-model="ctrl.link.url" class="gf-form-input width-20" ng-model-onblur>
         </div>
 
@@ -118,7 +118,7 @@
     </div>
 
     <div class="gf-form-group">
-      <h5 class="section-heading">包含</h5>
+      <h5 class="section-heading">包括</h5>
       <div>
         <gf-form-switch class="gf-form" label="Time range" checked="ctrl.link.keepTime" switch-class="max-width-6" label-class="width-9"></gf-form-switch>
         <gf-form-switch class="gf-form" label="Variable values" checked="ctrl.link.includeVars" switch-class="max-width-6" label-class="width-9"></gf-form-switch>

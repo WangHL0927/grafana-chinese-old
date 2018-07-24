@@ -2,6 +2,7 @@ import { coreModule, appEvents, contextSrv } from 'app/core/core';
 import { DashboardModel } from '../dashboard_model';
 import $ from 'jquery';
 import _ from 'lodash';
+import angular from 'angular';
 import config from 'app/core/config';
 
 export class SettingsCtrl {
@@ -118,7 +119,7 @@ export class SettingsCtrl {
     this.viewId = this.$location.search().editview;
 
     if (this.viewId) {
-      this.json = JSON.stringify(this.dashboard.getSaveModelClone(), null, 2);
+      this.json = angular.toJson(this.dashboard.getSaveModelClone(), true);
     }
 
     if (this.viewId === 'settings' && this.dashboard.meta.canMakeEditable) {
@@ -187,16 +188,16 @@ export class SettingsCtrl {
 
     if (alerts > 0) {
       confirmText = 'DELETE';
-      text2 = `该仪表板包含${alerts} 警报。删除这个仪表板也会删除这些警报。`;
+      text2 = `This dashboard contains ${alerts} alerts. Deleting this dashboard will also delete those alerts`;
     }
 
     appEvents.emit('confirm-modal', {
       title: 'Delete',
-      text: '你想删除这个仪表板吗？',
+      text: 'Do you want to delete this dashboard?',
       text2: text2,
       icon: 'fa-trash',
       confirmText: confirmText,
-      yesText: '删除',
+      yesText: 'Delete',
       onConfirm: () => {
         this.dashboard.meta.canSave = false;
         this.deleteDashboardConfirmed();
@@ -206,7 +207,7 @@ export class SettingsCtrl {
 
   deleteDashboardConfirmed() {
     this.backendSrv.deleteDashboard(this.dashboard.uid).then(() => {
-      appEvents.emit('alert-success', ['仪表板已删除', this.dashboard.title + ' 已被删除']);
+      appEvents.emit('alert-success', ['Dashboard Deleted', this.dashboard.title + ' has been deleted']);
       this.$location.url('/');
     });
   }

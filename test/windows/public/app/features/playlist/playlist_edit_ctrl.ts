@@ -38,7 +38,7 @@ export class PlaylistEditCtrl {
       });
     } else {
       this.navModel.node = {
-        text: 'New playlist',
+        text: '新播放列表',
         icon: this.navModel.node.icon,
       };
       this.navModel.breadcrumbs.push(this.navModel.node);

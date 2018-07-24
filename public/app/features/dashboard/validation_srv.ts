@@ -12,11 +12,11 @@ export class ValidationSrv {
   constructor(private $q, private backendSrv) {}
 
   validateNewDashboardName(folderId, name) {
-    return this.validate(folderId, name, '此文件夹中已经存在相同名称的仪表板');
+    return this.validate(folderId, name, '此文件夹中已存在具有相同名称的仪表板');
   }
 
   validateNewFolderName(name) {
-    return this.validate(0, name, '通用文件夹中已存在相同名称的文件夹或仪表板');
+    return this.validate(0, name, '常规文件夹中已存在相同名称的仪表板或文件夹');
   }
 
   private validate(folderId, name, existingErrorMessage) {
@@ -26,14 +26,14 @@ export class ValidationSrv {
     if (name.length === 0) {
       return this.$q.reject({
         type: 'REQUIRED',
-        message: 'Name is required',
+        message: '名称是必需的',
       });
     }
 
     if (folderId === 0 && nameLowerCased === this.rootName) {
       return this.$q.reject({
         type: 'EXISTING',
-        message: '这是一个保留名称，不能用于文件夹.',
+        message: '这是保留名称，不能用于文件夹。',
       });
     }
 

@@ -5,12 +5,12 @@ import { coreModule, JsonExplorer } from 'app/core/core';
 const template = `
 <div class="query-troubleshooter" ng-if="ctrl.isOpen">
   <div class="query-troubleshooter__header">
-    <a class="pointer" ng-click="ctrl.toggleMocking()">Mock Response</a>
+    <a class="pointer" ng-click="ctrl.toggleMocking()">模拟响应</a>
     <a class="pointer" ng-click="ctrl.toggleExpand()" ng-hide="ctrl.allNodesExpanded">
-      <i class="fa fa-plus-square-o"></i> 展开所有
+      <i class="fa fa-plus-square-o"></i> 展开全部
     </a>
     <a class="pointer" ng-click="ctrl.toggleExpand()" ng-show="ctrl.allNodesExpanded">
-      <i class="fa fa-minus-square-o"></i> 折叠所有
+      <i class="fa fa-minus-square-o"></i> 折叠全部
     </a>
     <a class="pointer" clipboard-button="ctrl.getClipboardText()"><i class="fa fa-clipboard"></i> 复制到剪贴板</a>
   </div>
@@ -91,7 +91,7 @@ export class QueryTroubleshooterCtrl {
     try {
       mockedData = JSON.parse(this.mockedResponse);
     } catch (err) {
-      appEvents.emit('alert-error', ['Failed to parse mocked response']);
+      appEvents.emit('alert-error', ['无法解析模拟的响应']);
       return;
     }
 

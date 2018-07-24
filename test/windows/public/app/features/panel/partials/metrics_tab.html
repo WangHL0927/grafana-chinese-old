@@ -39,24 +39,24 @@
 				<label class="gf-form-label">最小时间间隔</label>
 				<input type="text" class="gf-form-input width-6" placeholder="{{ctrl.panelCtrl.interval}}" ng-model="ctrl.panel.interval" spellcheck="false" ng-model-onblur ng-change="ctrl.panelCtrl.refresh()" />
 				<info-popover mode="right-absolute">
-          按时间间隔自动分组的下限。 建议设置为写入频率，
-					例如 <code>1m</code> 如果您的数据每分钟写入一次。 通过变量<code>$__interval</code> 访问自动间隔的时间范围
-          字符串和<code>$__interval_ms</code> 可用于数学表达式中的数字变量。
+					按时间间隔分组的下限，建议设置为数据写入频率，
+          例如 <code>1m</code> 如果您的数据每分钟写入一次。 Access auto interval via variable <code>$__interval</code> for time range
+					string and <code>$__interval_ms</code> for numeric variable that can be used in math expressions.
 				</info-popover>
 			</div>
 			<div class="gf-form gf-form--flex-end" ng-if="ctrl.queryOptions.cacheTimeout">
 				<label class="gf-form-label width-9">缓存超时</label>
 				<input  type="text" class="gf-form-input width-6" placeholder="60" ng-model="ctrl.panel.cacheTimeout" ng-model-onblur ng-change="ctrl.panelCtrl.refresh()" spellcheck="false" />
 				<info-popover mode="right-absolute">
-          如果您的时间系列商店有查询缓存，则此选项可以覆盖
-          缓存超时默认值。 以秒为单位指定一个数值。
+          如果您的时间序列存储具有查询缓存，则此选项可以覆盖默认值
+          缓存超时。 以秒为单位指定数值。
 				</info-popover>
 			</div>
 			<div class="gf-form gf-form--flex-end" ng-if="ctrl.queryOptions.maxDataPoints">
-				<label class="gf-form-label width-9">最大数据点</label>
+				<label class="gf-form-label width-9">最大数据点数</label>
 				<input type="text" class="gf-form-input width-6" placeholder="auto" ng-model-onblur ng-change="ctrl.panelCtrl.refresh()" ng-model="ctrl.panel.maxDataPoints" spellcheck="false"  />
 				<info-popover mode="right-absolute">
-          查询应返回的最大数据点数目。 对于graph图标
+          查询应返回的最大数据点数。 对于图表这个
           自动设置为每个像素一个数据点。
 				</info-popover>
 			</div>
@@ -90,7 +90,7 @@
 				<span class="gf-form-query-letter-cell-letter">{{ctrl.panelCtrl.nextRefId}}</span>
 			</label>
 			<button class="btn btn-secondary gf-form-btn" ng-click="ctrl.addQuery()" ng-hide="ctrl.datasourceInstance.meta.mixed">
-        添加查询
+				添加查询
 			</button>
 			<div class="dropdown" ng-if="ctrl.datasourceInstance.meta.mixed">
 				<gf-form-dropdown model="ctrl.addQueryDropdown" get-options="ctrl.getOptions(false)" on-change="ctrl.addMixedQuery($option)">

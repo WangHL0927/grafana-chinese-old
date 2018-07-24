@@ -4,7 +4,7 @@
 
   <div ng-if="ctrl.current.readOnly"  class="page-action-bar">
     <div class="grafana-info-box span8">
-      声明。 这个数据源是通过配置添加的，不能用UI修改。 请联系您的服务器管理员以更新此数据源。
+      免责声明。 此数据源是由config添加的，无法使用UI进行修改。 请联系您的服务器管理员以更新此数据源。
     </div>
   </div>
 
@@ -15,9 +15,8 @@
           <span class="gf-form-label width-7">名称</span>
           <input class="gf-form-input max-width-23" type="text" ng-model="ctrl.current.name" placeholder="name" required>
           <info-popover offset="0px -135px" mode="right-absolute">
-            当您在面板中选择数据源时使用该名称。
-            新面板预选<em>默认</em>数据源。
-                        。
+            在面板中选择数据源时使用该名称。
+            在新面板中默认选择<em>Default</em>数据源。
           </info-popover>
         </div>
         <gf-form-switch class="gf-form" label="Default" checked="ctrl.current.isDefault" switch-class="max-width-6"></gf-form-switch>
@@ -32,8 +31,7 @@
     </div>
 
     <div class="alert alert-info gf-form-group" ng-if="ctrl.datasourceMeta.state === 'alpha'">
-      这个插件被标记为处于alpha状态，这意味着它处于开发早期阶段
-             更新将包括重大更改。
+      此插件标记为处于alpha状态，这意味着它处于早期开发阶段，更新将包括重大变更。
     </div>
 
     <rebuild-on-change property="ctrl.datasourceMeta.id">
@@ -42,14 +40,14 @@
     </rebuild-on-change>
 
     <div ng-if="ctrl.hasDashboards">
-      <h3 class="section-heading">Bundled Plugin Dashboards</h3>
+      <h3 class="section-heading">捆绑的插件仪表板</h3>
       <div class="section">
         <dashboard-import-list plugin="ctrl.datasourceMeta" datasource="ctrl.current"></dashboard-import-list>
       </div>
     </div>
 
     <div ng-if="ctrl.testing" class="gf-form-group section">
-      <h5 ng-show="!ctrl.testing.done">测试中.... <i class="fa fa-spiner fa-spin"></i></h5>
+      <h5 ng-show="!ctrl.testing.done">测试.... <i class="fa fa-spiner fa-spin"></i></h5>
       <div class="alert-{{ctrl.testing.status}} alert" ng-show="ctrl.testing.done">
         <div class="alert-icon">
           <i class="fa fa-exclamation-triangle" ng-show="ctrl.testing.status === 'error'"></i>
@@ -66,7 +64,7 @@
       <button type="submit" class="btn btn-danger" ng-disabled="ctrl.current.readOnly"  ng-show="!ctrl.isNew" ng-click="ctrl.delete()">
         删除
       </button>
-      <a class="btn btn-inverse" href="datasources">Back</a>
+      <a class="btn btn-inverse" href="datasources">返回</a>
     </div>
 
     <br />

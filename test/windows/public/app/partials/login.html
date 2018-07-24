@@ -4,70 +4,101 @@
       <img class="logo-icon" src="public/img/grafana_icon.svg" alt="Grafana" />
       <i class="icon-gf icon-gf-grafana_wordmark"></i>
     </div>
-    <div class="login-inner-box">
-      <form name="loginForm" class="login-form-group gf-form-group" ng-hide="disableLoginForm">
-        <div class="login-form">
-          <input type="text" name="username" class="gf-form-input login-form-input" required ng-model='formModel.user' placeholder={{loginHint}}
-            autofocus>
-        </div>
-        <div class="login-form">
-          <input type="password" name="password" class="gf-form-input login-form-input" required ng-model="formModel.password" id="inputPassword"
-            placeholder="密码">
-        </div>
-        <div class="login-button-group">
-          <button type="submit" class="btn btn-large p-x-2" ng-click="submit();" ng-class="{'btn-inverse': !loginForm.$valid, 'btn-primary': loginForm.$valid}">
-            登录
-          </button>
+    <div class="login-outer-box">
+      <div class="login-inner-box" id="login-view">
+        <form name="loginForm" class="login-form-group gf-form-group" ng-hide="disableLoginForm">
+          <div class="login-form">
+            <input type="text" name="username" class="gf-form-input login-form-input" required ng-model='formModel.user' placeholder={{loginHint}}
+              autofocus>
+          </div>
+          <div class="login-form">
+            <input type="password" name="password" class="gf-form-input login-form-input" required ng-model="formModel.password" id="inputPassword"
+              placeholder="密码">
+          </div>
+          <div class="login-button-group">
+            <button type="submit" class="btn btn-large p-x-2" ng-click="submit();" ng-class="{'btn-inverse': !loginForm.$valid, 'btn-primary': loginForm.$valid}">
+              登录
+            </button>
             <div class="small login-button-forgot-password">
               <a href="user/password/send-reset-email">
                 忘记密码？
               </a>
+            </div>
+          </div>
+        </form>
+        <div class="text-center login-divider" ng-show="oauthEnabled">
+          <div>
+            <div class="login-divider-line">
+            </div>
+          </div>
+          <div>
+            <span class="login-divider-text">
+              <span ng-hide="disableLoginForm">or</span>
+            </span>
+          </div>
+          <div>
+            <div class="login-divider-line">
+            </div>
           </div>
         </div>
-      </form>
-      <div class="text-center login-divider" ng-show="oauthEnabled">
-        <div>
-          <div class="login-divider-line">
+        <div class="clearfix"></div>
+        <div class="login-oauth text-center" ng-show="oauthEnabled">
+          <a class="btn btn-medium btn-service btn-service--google login-btn" href="login/google" target="_self" ng-if="oauth.google">
+            <i class="btn-service-icon fa fa-google"></i>
+            使用 Google 登录
+          </a>
+          <a class="btn btn-medium btn-service btn-service--github login-btn" href="login/github" target="_self" ng-if="oauth.github">
+            <i class="btn-service-icon fa fa-github"></i>
+            使用 GitHub 账户登录
+          </a>
+          <a class="btn btn-medium btn-inverse btn-service btn-service--grafanacom login-btn" href="login/grafana_com" target="_self"
+            ng-if="oauth.grafana_com">
+            <i class="btn-service-icon"></i>
+            使用 Grafana.com 账户登录
+          </a>
+          <a class="btn btn-medium btn-inverse btn-service btn-service--oauth login-btn" href="login/generic_oauth" target="_self"
+            ng-if="oauth.generic_oauth">
+            <i class="btn-service-icon fa fa-sign-in"></i>
+            使用 {{oauth.generic_oauth.name}} 登录
+          </a>
+        </div>
+        <div class="login-signup-box" ng-show="!disableUserSignUp">
+          <div class="login-signup-title p-r-1">
+            Grafana新手？
           </div>
+          <a href="signup" class="btn btn-medium btn-signup btn-p-x-2">
+            注册
+          </a>
         </div>
-        <div>
-          <span class="login-divider-text">
-            <span ng-hide="disableLoginForm">or</span>
-          </span>
+      </div>
+      <div class="login-inner-box remove hidden" id="change-password-view">
+        <div class="text-left login-change-password-info">
+          <h5>更改密码</h5>
+          在您开始使用炫酷的仪表板之前，我们需要您通过更改初始密码来提高帐户的安全性。
+          <br />您可以稍后再次更改密码。
         </div>
-        <div>
-          <div class="login-divider-line">
+        <form class="login-form-group gf-form-group">
+          <div class="login-form">
+            <input type="password" id="newPassword" name="newPassword" class="gf-form-input login-form-input" required ng-model='command.newPassword'
+              placeholder="新密码">
           </div>
-        </div>
+          <div class="login-form">
+            <input type="password" name="confirmNew" class="gf-form-input login-form-input" required ng-model="command.confirmNew" placeholder="确认新密码">
+          </div>
+          <div class="login-button-group login-button-group--right text-right">
+            <a class="btn btn-link" ng-click="skip();">
+              跳过
+              <info-popover mode="no-padding">
+                如果您跳过，则下次登录时会提示您更改密码。
+              </info-popover>
+            </a>
+            <button type="submit" class="btn btn-large p-x-2" ng-click="changePassword();" ng-class="{'btn-inverse': !loginForm.$valid, 'btn-success': loginForm.$valid}">
+              保存
+            </button>
+          </div>
+        </form>
       </div>
       <div class="clearfix"></div>
-      <div class="login-oauth text-center" ng-show="oauthEnabled">
-        <a class="btn btn-medium btn-service btn-service--google login-btn" href="login/google" target="_self" ng-if="oauth.google">
-          <i class="btn-service-icon fa fa-google"></i>
-          使用 Google 账户
-        </a>
-        <a class="btn btn-medium btn-service btn-service--github login-btn" href="login/github" target="_self" ng-if="oauth.github">
-          <i class="btn-service-icon fa fa-github"></i>
-          使用 GitHub 账户
-        </a>
-        <a class="btn btn-medium btn-inverse btn-service btn-service--grafanacom login-btn" href="login/grafana_com" target="_self" ng-if="oauth.grafana_com">
-          <i class="btn-service-icon"></i>
-          使用 Grafana.com 账户
-        </a>
-        <a class="btn btn-medium btn-inverse btn-service btn-service--oauth login-btn" href="login/generic_oauth" target="_self" ng-if="oauth.generic_oauth">
-          <i class="btn-service-icon fa fa-sign-in"></i>
-          使用 {{oauth.generic_oauth.name}} 账户
-        </a>
-      </div>
-      <div class="login-signup-box" ng-show="!disableUserSignUp">
-        <div class="login-signup-title p-r-1">
-          New to Grafana?
-        </div>
-        <a href="signup" class="btn btn-medium btn-signup btn-p-x-2">
-          注册
-        </a>
-      </div>
     </div>
-    <div class="clearfix"></div>
   </div>
 </div>

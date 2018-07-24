@@ -3,14 +3,14 @@
 <div class="page-container page-body">
   <div class="page-action-bar">
     <label class="gf-form gf-form--grow gf-form--has-input-icon">
-      <input type="text" class="gf-form-input width-20" ng-model="ctrl.searchQuery" ng-change="ctrl.onQueryUpdated()" placeholder="Filter by username or email" />
+      <input type="text" class="gf-form-input width-20" ng-model="ctrl.searchQuery" ng-change="ctrl.onQueryUpdated()" placeholder="按用户名或邮箱过滤" />
       <i class="gf-form-input-icon fa fa-search"></i>
     </label>
 
     <div class="page-action-bar__spacer"></div>
 
     <button class="btn btn-inverse" ng-show="ctrl.pendingInvites.length" ng-click="ctrl.showInvites = true">
-      待确认邀请 ({{ctrl.pendingInvites.length}})
+      待邀请 ({{ctrl.pendingInvites.length}})
     </button>
 
     <a class="btn btn-success" href="org/users/invite" ng-show="ctrl.canInvite">
@@ -36,8 +36,8 @@
           <th>登录</th>
           <th>邮箱</th>
           <th>
-            查看
-            <tip>上次使用时间</tip>
+            上次登录
+            <tip>上次用户登录并使用Grafana的时间</tip>
           </th>
           <th>角色</th>
           <th style="width: 34px;"></th>
@@ -70,7 +70,7 @@
       <thead>
         <tr>
           <th>邮箱</th>
-          <th>姓名</th>
+          <th>名称</th>
           <th></th>
           <th style="width: 34px;"></th>
         </tr>

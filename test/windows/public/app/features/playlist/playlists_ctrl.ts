@@ -31,8 +31,8 @@ export class PlaylistsCtrl {
   removePlaylist(playlist) {
     this.$scope.appEvent('confirm-modal', {
       title: '删除',
-      text: '您确定要删除播放列表 ' + playlist.name + '？',
-      yesText: '已删除',
+      text: '您确定要删除播放列表' + playlist.name + '吗？',
+      yesText: '删除',
       icon: 'fa-trash',
       onConfirm: () => {
         this.removePlaylistConfirmed(playlist);

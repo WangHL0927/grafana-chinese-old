@@ -5,7 +5,7 @@ const template = `
   <div class="modal-header">
     <h2 class="modal-header-title">
       <i class="fa fa-exclamation"></i>
-      <span class="p-l-1">更改未保存</span>
+      <span class="p-l-1">未保存的更改</span>
     </h2>
 
     <a class="modal-header-close" ng-click="ctrl.dismiss();">
@@ -16,7 +16,7 @@ const template = `
   <div class="modal-content text-center">
 
     <div class="confirm-modal-text">
-      你想保存你的更改吗？
+      要保存更改吗？
     </div>
 
     <div class="confirm-modal-buttons">

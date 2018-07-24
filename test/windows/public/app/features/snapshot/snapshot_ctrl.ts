@@ -15,12 +15,9 @@ export class SnapshotsCtrl {
 
   removeSnapshotConfirmed(snapshot) {
     _.remove(this.snapshots, { key: snapshot.key });
-    this.backendSrv.get('/api/snapshots-delete/' + snapshot.deleteKey).then(
+    this.backendSrv.delete('/api/snapshots/' + snapshot.key).then(
+      () => {},
       () => {
-        this.$rootScope.appEvent('alert-success', ['Snapshot deleted', '']);
-      },
-      () => {
-        this.$rootScope.appEvent('alert-error', ['Unable to delete snapshot', '']);
         this.snapshots.push(snapshot);
       }
     );
@@ -28,9 +25,9 @@ export class SnapshotsCtrl {
 
   removeSnapshot(snapshot) {
     this.$rootScope.appEvent('confirm-modal', {
-      title: 'Delete',
-      text: 'Are you sure you want to delete snapshot ' + snapshot.name + '?',
-      yesText: 'Delete',
+      title: '删除',
+      text: '您确定要删除快照' + snapshot.name + '吗？',
+      yesText: '删除',
       icon: 'fa-trash',
       onConfirm: () => {
         this.removeSnapshotConfirmed(snapshot);

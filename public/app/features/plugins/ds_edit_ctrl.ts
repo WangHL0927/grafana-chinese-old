@@ -186,9 +186,9 @@ export class DataSourceEditCtrl {
 
   delete(s) {
     appEvents.emit('confirm-modal', {
-      title: 'Delete',
-      text: 'Are you sure you want to delete this datasource?',
-      yesText: 'Delete',
+      title: '删除',
+      text: '您确定要删除此数据源吗？',
+      yesText: '删除',
       icon: 'fa-trash',
       onConfirm: () => {
         this.confirmDelete();
@@ -204,10 +204,18 @@ coreModule.directive('datasourceHttpSettings', function() {
     scope: {
       current: '=',
       suggestUrl: '@',
+      noDirectAccess: '@',
     },
     templateUrl: 'public/app/features/plugins/partials/ds_http_settings.html',
     link: {
       pre: function($scope, elem, attrs) {
+        // do not show access option if direct access is disabled
+        $scope.showAccessOption = $scope.noDirectAccess !== 'true';
+        $scope.showAccessHelp = false;
+        $scope.toggleAccessHelp = function() {
+          $scope.showAccessHelp = !$scope.showAccessHelp;
+        };
+
         $scope.getSuggestUrls = function() {
           return [$scope.suggestUrl];
         };

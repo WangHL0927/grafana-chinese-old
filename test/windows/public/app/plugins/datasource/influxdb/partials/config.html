@@ -1,23 +1,23 @@
 <datasource-http-settings current="ctrl.current" suggest-url="http://localhost:8086">
 </datasource-http-settings>
 
-<h3 class="page-heading">InfluxDB Details</h3>
+<h3 class="page-heading">InfluxDB 详细信息</h3>
 
 <div class="gf-form-group">
 	<div class="gf-form-inline">
 		<div class="gf-form max-width-30">
-			<span class="gf-form-label width-7">Database</span>
+			<span class="gf-form-label width-7">数据库</span>
 			<input type="text" class="gf-form-input" ng-model='ctrl.current.database' placeholder="" required></input>
 		</div>
 	</div>
 
 	<div class="gf-form-inline">
 		<div class="gf-form max-width-15">
-			<span class="gf-form-label width-7">User</span>
+			<span class="gf-form-label width-7">用户</span>
 			<input type="text" class="gf-form-input" ng-model='ctrl.current.user' placeholder=""></input>
 		</div>
 		<div class="gf-form max-width-15">
-			<span class="gf-form-label width-7">Password</span>
+			<span class="gf-form-label width-7">密码</span>
 			<input type="password" class="gf-form-input" ng-model='ctrl.current.password' placeholder=""></input>
 		</div>
 	</div>
@@ -26,13 +26,13 @@
 
 <div class="gf-form-group">
 	<div class="grafana-info-box">
-		<h5>Database Access</h5>
+		<h5>数据库访问</h5>
 		<p>
-			Setting the database for this datasource does not deny access to other databases.  The InfluxDB query syntax allows
-			switching the database in the query.  For example:
-			<code>SHOW MEASUREMENTS ON _internal</code> or <code>SELECT * FROM "_internal".."database" LIMIT 10</code>
+      为此数据源设置数据库不会拒绝访问其他数据库。 InfluxDB查询语法允许
+      在查询中切换数据库。 例如：
+			<code>SHOW MEASUREMENTS ON _internal</code> 或 <code>SELECT * FROM "_internal".."database" LIMIT 10</code>
 			<br/><br/>
-			To support data isolation and security, make sure appropriate permissions are configured in InfluxDB.
+      要支持数据隔离和安全性，请确保在InfluxDB中配置了适当的权限。
 		</p>
 	</div>
 </div>
@@ -43,8 +43,8 @@
 			<span class="gf-form-label">Min time interval</span>
 			<input type="text" class="gf-form-input width-6" ng-model="ctrl.current.jsonData.timeInterval" spellcheck='false' placeholder="10s"></input>
 			<info-popover mode="right-absolute">
-				A lower limit for the auto group by time interval. Recommended to be set to write frequency,
-				for example <code>1m</code> if your data is written every minute.
+        自动设置 group by 时间间隔下限。 建议设置为写入频率，
+        例如 <code>1m</code> 如果您的数据每分钟写一次。
 			</info-popover>
 		</div>
 	</div>

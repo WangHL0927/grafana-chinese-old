@@ -4,7 +4,7 @@ var template = `
 <input type="file" id="dashupload" name="dashupload" class="hide"/>
 <label class="btn btn-success" for="dashupload">
   <i class="fa fa-upload"></i>
-  上传.json文件
+  Upload .json File
 </label>
 `;
 
@@ -26,7 +26,7 @@ function uploadDashboardDirective(timer, alertSrv, $location) {
               dash = JSON.parse(e.target.result);
             } catch (err) {
               console.log(err);
-              scope.appEvent('alert-error', ['导入失败', 'JSON - > JS序列化失败: ' + err.message]);
+              scope.appEvent('alert-error', ['导入失败', 'JSON -> JS序列化失败： ' + err.message]);
               return;
             }
 
@@ -49,7 +49,7 @@ function uploadDashboardDirective(timer, alertSrv, $location) {
         // Something
         document.getElementById('dashupload').addEventListener('change', file_selected, false);
       } else {
-        alertSrv.set('Oops', '很抱歉，此浏览器并未完全支持HTML5 File API。', 'error');
+        alertSrv.set('Oops', '抱歉，此浏览器不完全支持HTML5文件API。', 'error');
       }
     },
   };

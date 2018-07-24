@@ -34,7 +34,7 @@ export class MetricsTabCtrl {
       }
     }
 
-    this.addQueryDropdown = { text: 'Add Query', value: null, fake: true };
+    this.addQueryDropdown = { text: '添加查询', value: null, fake: true };
 
     // update next ref id
     this.panelCtrl.nextRefId = this.dashboard.getNextQueryLetter(this.panel);
@@ -79,7 +79,7 @@ export class MetricsTabCtrl {
       isNew: true,
       datasource: option.datasource.name,
     });
-    this.addQueryDropdown = { text: 'Add Query', value: null, fake: true };
+    this.addQueryDropdown = { text: '添加查询', value: null, fake: true };
   }
 
   addQuery() {

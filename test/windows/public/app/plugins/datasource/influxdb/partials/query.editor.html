@@ -6,13 +6,13 @@
     </div>
     <div class="gf-form-inline">
       <div class="gf-form">
-        <label class="gf-form-label query-keyword">FORMAT AS</label>
+        <label class="gf-form-label query-keyword">格式化为</label>
         <div class="gf-form-select-wrapper">
           <select class="gf-form-input gf-size-auto" ng-model="ctrl.target.resultFormat" ng-options="f.value as f.text for f in ctrl.resultFormats" ng-change="ctrl.refresh()"></select>
         </div>
       </div>
       <div class="gf-form max-width-25"  ng-hide="ctrl.target.resultFormat === 'table'">
-        <label class="gf-form-label query-keyword">ALIAS BY</label>
+        <label class="gf-form-label query-keyword">别名</label>
         <input type="text" class="gf-form-input" ng-model="ctrl.target.alias" spellcheck='false' placeholder="Naming pattern" ng-blur="ctrl.refresh()">
       </div>
       <div class="gf-form gf-form--grow">
@@ -121,7 +121,7 @@
 
     <div class="gf-form-inline">
       <div class="gf-form">
-        <label class="gf-form-label query-keyword width-7">FORMAT AS</label>
+        <label class="gf-form-label query-keyword width-7">格式为</label>
         <div class="gf-form-select-wrapper">
           <select class="gf-form-input gf-size-auto" ng-model="ctrl.target.resultFormat" ng-options="f.value as f.text for f in ctrl.resultFormats" ng-change="ctrl.refresh()"></select>
         </div>
@@ -133,7 +133,7 @@
 
     <div class="gf-form-inline"  ng-hide="ctrl.target.resultFormat === 'table'">
       <div class="gf-form max-width-30">
-        <label class="gf-form-label query-keyword width-7">ALIAS BY</label>
+        <label class="gf-form-label query-keyword width-7">别名</label>
         <input type="text" class="gf-form-input" ng-model="ctrl.target.alias" spellcheck='false' placeholder="Naming pattern" ng-blur="ctrl.refresh()">
       </div>
       <div class="gf-form gf-form--grow">

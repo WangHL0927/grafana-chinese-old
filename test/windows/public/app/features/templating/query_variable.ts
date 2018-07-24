@@ -218,6 +218,6 @@ export class QueryVariable implements Variable {
 variableTypes['query'] = {
   name: 'Query',
   ctor: QueryVariable,
-  description: 'Variable values are fetched from a datasource query',
+  description: '从数据源查询中获取变量值',
   supportsMulti: true,
 };

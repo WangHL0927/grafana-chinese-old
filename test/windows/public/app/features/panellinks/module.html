@@ -1,6 +1,6 @@
 <div class="editor-row">
 	<h5 class="section-heading">
-		追溯/详情 链接<tip>这些链接显示在面板菜单的下拉菜单中。 </tip></h5>
+    追溯 / 细节链接<tip>这些链接显示在面板菜单的下拉菜单中。</tip></h5>
 	</h5>
 
 	<div class="gf-form-group" ng-repeat="link in panel.links">
@@ -16,7 +16,7 @@
 				<span class="gf-form-label width-7" ng-show="link.type === 'dashboard'">仪表板</span>
 				<input ng-show="link.type === 'dashboard'" type="text" ng-model="link.dashboard" bs-typeahead="searchDashboards" class="gf-form-input" ng-blur="dashboardChanged(link)">
 
-				<span class="gf-form-label width-7" ng-show="link.type === 'absolute'">网址</span>
+				<span class="gf-form-label width-7" ng-show="link.type === 'absolute'">Url</span>
 				<input ng-show="link.type === 'absolute'" type="text" ng-model="link.url" class="gf-form-input max-width-14">
 			</div>
 
@@ -29,7 +29,7 @@
 
 		<div class="section">
 			<div class="gf-form">
-				<span class="gf-form-label width-10">网址参数</span>
+				<span class="gf-form-label width-10">Url 参数</span>
 				<input type="text" ng-model="link.params" class="gf-form-input width-10">
 			</div>
 

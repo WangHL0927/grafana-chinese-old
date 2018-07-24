@@ -43,7 +43,7 @@ class PermissionsList extends Component<IProps, any> {
           {fetching === true && permissions.length < 1 ? (
             <tr>
               <td colSpan={4}>
-                <em>加载权限...</em>
+                <em>Loading permissions...</em>
               </td>
             </tr>
           ) : null}
@@ -51,7 +51,7 @@ class PermissionsList extends Component<IProps, any> {
           {fetching === false && permissions.length < 1 ? (
             <tr>
               <td colSpan={4}>
-                <em>没有设置权限。 只能由管理员访问。</em>
+                <em>No permissions are set. Will only be accessible by admins.</em>
               </td>
             </tr>
           ) : null}

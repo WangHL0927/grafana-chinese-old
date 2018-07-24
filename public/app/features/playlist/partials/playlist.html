@@ -3,10 +3,9 @@
 <div class="page-container page-body" ng-form="playlistEditForm">
 
   <h3 class="page-sub-heading" ng-hide="ctrl.isNew">编辑播放列表</h3>
-  <h3 class="page-sub-heading" ng-show="ctrl.isNew">新建播放列表</h3>
+  <h3 class="page-sub-heading" ng-show="ctrl.isNew">新播放列表</h3>
 
-	<p class="playlist-description">播放列表循环切换预选的仪表板列表。 播放列表是建立态势感知的好方法，
-         或者只是向您的团队或访客展示您的指标。</p>
+	<p class="playlist-description">播放列表通过预先选择的仪表板列表进行循环。播放列表可以用来构建态势感知，或者只是向您的团队和访问者展示您的数据指标。</p>
 
 	<div class="gf-form-group">
 		<div class="gf-form">
@@ -27,7 +26,7 @@
 		<div class="col-lg-6">
 			<div class="playlist-search-containerwrapper">
 				<div class="max-width-32">
-					<h5 class="page-headering playlist-column-header">可用的</h5>
+					<h5 class="page-headering playlist-column-header">可用</h5>
 					<div style="">
 						<playlist-search class="playlist-search-container" search-started="ctrl.searchStarted(promise)"></playlist-search>
 					</div>
@@ -45,7 +44,7 @@
 						<td class="add-dashboard">
 							<button class="btn btn-inverse btn-mini pull-right" ng-click="ctrl.addPlaylistItem(playlistItem)">
 								<i class="fa fa-plus"></i>
-								添加到播放列表
+                添加到播放列表
 							</button>
 						</td>
 					</tr>
@@ -72,7 +71,7 @@
 		</div>
 
 		<div class="col-lg-6">
-			<h5 class="page headering playlist-column-header">已选择</h5>
+			<h5 class="page headering playlist-column-header">Selected</h5>
 			<table class="filter-table playlist-available-list">
 				<tr ng-repeat="playlistItem in ctrl.playlistItems">
 					<td ng-if="playlistItem.type === 'dashboard_by_id'">

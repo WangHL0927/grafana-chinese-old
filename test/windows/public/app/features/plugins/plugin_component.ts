@@ -6,7 +6,6 @@ import coreModule from 'app/core/core_module';
 import { importPluginModule } from './plugin_loader';
 
 import { UnknownPanelCtrl } from 'app/plugins/panel/unknown/module';
-import { DashboardRowCtrl } from './row_ctrl';
 
 /** @ngInject **/
 function pluginDirectiveLoader($compile, datasourceSrv, $rootScope, $q, $http, $templateCache) {
@@ -59,15 +58,6 @@ function pluginDirectiveLoader($compile, datasourceSrv, $rootScope, $q, $http, $
   }
 
   function loadPanelComponentInfo(scope, attrs) {
-    if (scope.panel.type === 'row') {
-      return $q.when({
-        name: 'dashboard-row',
-        bindings: { dashboard: '=', panel: '=' },
-        attrs: { dashboard: 'ctrl.dashboard', panel: 'panel' },
-        Component: DashboardRowCtrl,
-      });
-    }
-
     var componentInfo: any = {
       name: 'panel-plugin-' + scope.panel.type,
       bindings: { dashboard: '=', panel: '=', row: '=' },
@@ -136,24 +126,6 @@ function pluginDirectiveLoader($compile, datasourceSrv, $rootScope, $q, $http, $
           });
         });
       }
-      // QueryOptionsCtrl
-      case 'query-options-ctrl': {
-        return datasourceSrv.get(scope.ctrl.panel.datasource).then(ds => {
-          return importPluginModule(ds.meta.module).then((dsModule): any => {
-            if (!dsModule.QueryOptionsCtrl) {
-              return { notFound: true };
-            }
-
-            return {
-              baseUrl: ds.meta.baseUrl,
-              name: 'query-options-ctrl-' + ds.meta.id,
-              bindings: { panelCtrl: '=' },
-              attrs: { 'panel-ctrl': 'ctrl.panelCtrl' },
-              Component: dsModule.QueryOptionsCtrl,
-            };
-          });
-        });
-      }
       // Annotations
       case 'annotations-query-ctrl': {
         return importPluginModule(scope.ctrl.currentDatasource.meta.module).then(function(dsModule) {
@@ -218,7 +190,7 @@ function pluginDirectiveLoader($compile, datasourceSrv, $rootScope, $q, $http, $
       }
       default: {
         return $q.reject({
-          message: 'Could not find component type: ' + attrs.type,
+          message: '找不到组件类型：' + attrs.type,
         });
       }
     }
@@ -251,7 +223,7 @@ function pluginDirectiveLoader($compile, datasourceSrv, $rootScope, $q, $http, $
 
     if (!componentInfo.Component) {
       throw {
-        message: 'Failed to find exported plugin component for ' + componentInfo.name,
+        message: '无法找到导出的插件组件 ' + componentInfo.name,
       };
     }
 
@@ -274,7 +246,7 @@ function pluginDirectiveLoader($compile, datasourceSrv, $rootScope, $q, $http, $
         })
         .catch(err => {
           $rootScope.appEvent('alert-error', ['Plugin Error', err.message || err]);
-          console.log('Plugin component error', err);
+          console.log('插件组件错误', err);
         });
     },
   };

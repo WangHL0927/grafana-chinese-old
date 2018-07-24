@@ -49,7 +49,7 @@ export class PluginEditCtrl {
       this.navModel.main.children.push({
         icon: 'gicon gicon-cog',
         id: 'config',
-        text: 'Config',
+        text: '配置',
         url: `plugins/${this.model.id}/edit?tab=config`,
       });
 
@@ -59,7 +59,7 @@ export class PluginEditCtrl {
         this.navModel.main.children.push({
           icon: 'gicon gicon-dashboard',
           id: 'dashboards',
-          text: 'Dashboards',
+          text: '仪表板',
           url: `plugins/${this.model.id}/edit?tab=dashboards`,
         });
       }

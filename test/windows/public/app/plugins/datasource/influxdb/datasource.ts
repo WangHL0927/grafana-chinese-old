@@ -127,7 +127,7 @@ export default class InfluxDatasource {
   annotationQuery(options) {
     if (!options.annotation.query) {
       return this.$q.reject({
-        message: 'Query missing in annotation definition',
+        message: '注释定义中缺少查询',
       });
     }
 
@@ -137,7 +137,7 @@ export default class InfluxDatasource {
 
     return this._seriesQuery(query, options).then(data => {
       if (!data || !data.results || !data.results[0]) {
-        throw { message: 'No results in response from InfluxDB' };
+        throw { message: '来自InfluxDB的回应中没有数据' };
       }
       return new InfluxSeries({
         series: data.results[0].series,
@@ -218,7 +218,7 @@ export default class InfluxDatasource {
         if (error) {
           return { status: 'error', message: error };
         }
-        return { status: 'success', message: 'Data source is working' };
+        return { status: 'success', message: '数据源正在运行' };
       })
       .catch(err => {
         return { status: 'error', message: err.message };

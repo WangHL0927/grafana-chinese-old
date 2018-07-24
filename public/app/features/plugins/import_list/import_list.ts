@@ -62,14 +62,14 @@ export class DashImportListCtrl {
     }
 
     return this.backendSrv.post(`/api/dashboards/import`, installCmd).then(res => {
-      this.$rootScope.appEvent('alert-success', ['Dashboard Imported', dash.title]);
+      this.$rootScope.appEvent('alert-success', ['仪表板已导入', dash.title]);
       _.extend(dash, res);
     });
   }
 
   remove(dash) {
     this.backendSrv.delete('/api/dashboards/' + dash.importedUri).then(() => {
-      this.$rootScope.appEvent('alert-success', ['Dashboard Deleted', dash.title]);
+      this.$rootScope.appEvent('alert-success', ['仪表板已删除', dash.title]);
       dash.imported = false;
     });
   }

@@ -21,7 +21,7 @@
     <div class="search-dropdown__col_1">
       <div class="search-results-scroller">
         <div class="search-results-container" grafana-scrollbar>
-          <h6 ng-show="!ctrl.isLoading && ctrl.results.length === 0">找不到与您的查询相匹配的仪表板。</h6>
+          <h6 ng-show="!ctrl.isLoading && ctrl.results.length === 0">No dashboards matching your query were found.</h6>
           <dashboard-search-results
             results="ctrl.results"
             on-tag-selected="ctrl.filterByTag($tag)"
@@ -35,9 +35,9 @@
       <div class="search-filter-box" ng-click="ctrl.onFilterboxClick()">
         <div class="search-filter-box__header">
           <i class="fa fa-filter"></i>
-          筛选：
+          Filter by:
           <a class="pointer pull-right small" ng-click="ctrl.clearSearchFilter()">
-            <i class="fa fa-remove"></i> 清空
+            <i class="fa fa-remove"></i> Clear
           </a>
         </div>
 
@@ -45,18 +45,18 @@
         </tag-filter>
       </div>
 
-      <div class="search-filter-box" ng-if="ctrl.isEditor">
+      <div class="search-filter-box" ng-if="ctrl.isEditor || ctrl.hasEditPermissionInFolders">
         <a href="dashboard/new" class="search-filter-box-link">
-          <i class="gicon gicon-dashboard-new"></i> 新仪表板
+          <i class="gicon gicon-dashboard-new"></i> New dashboard
         </a>
-        <a href="dashboards/folder/new" class="search-filter-box-link">
-          <i class="gicon gicon-folder-new"></i> 新建文件夹
+        <a href="dashboards/folder/new" class="search-filter-box-link" ng-if="ctrl.isEditor">
+          <i class="gicon gicon-folder-new"></i> New folder
         </a>
-        <a href="dashboard/import" class="search-filter-box-link">
-          <i class="gicon gicon-dashboard-import"></i> 导入仪表板
+        <a href="dashboard/import" class="search-filter-box-link" ng-if="ctrl.isEditor || ctrl.hasEditPermissionInFolders">
+          <i class="gicon gicon-dashboard-import"></i> Import dashboard
         </a>
         <a class="search-filter-box-link" target="_blank" href="https://grafana.com/dashboards?utm_source=grafana_search">
-          <img src="public/img/icn-dashboard-tiny.svg" width="20" /> 在Grafana.com上查找仪表板
+          <img src="public/img/icn-dashboard-tiny.svg" width="20" /> Find dashboards on Grafana.com
         </a>
       </div>
     </div>

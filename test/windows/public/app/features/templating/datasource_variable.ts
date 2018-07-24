@@ -63,7 +63,7 @@ export class DatasourceVariable implements Variable {
     }
 
     if (options.length === 0) {
-      options.push({ text: 'No data sources found', value: '' });
+      options.push({ text: '未找到任何数据源', value: '' });
     }
 
     this.options = options;
@@ -89,5 +89,5 @@ export class DatasourceVariable implements Variable {
 variableTypes['datasource'] = {
   name: 'Datasource',
   ctor: DatasourceVariable,
-  description: 'Enabled you to dynamically switch the datasource for multiple panels',
+  description: '使您能够动态切换多个面板的数据源',
 };

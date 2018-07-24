@@ -56,9 +56,9 @@ export class DashboardRow extends React.Component<DashboardRowProps, any> {
 
   delete() {
     appEvents.emit('confirm-modal', {
-      title: '删除行',
-      text: '您确定要删除此行及其所有面板吗？',
-      altActionText: '仅删除行',
+      title: 'Delete Row',
+      text: 'Are you sure you want to remove this row and all its panels?',
+      altActionText: 'Delete row only',
       icon: 'fa-trash',
       onConfirm: () => {
         const panelContainer = this.props.getPanelContainer();
@@ -84,15 +84,18 @@ export class DashboardRow extends React.Component<DashboardRowProps, any> {
       'fa-chevron-right': this.state.collapsed,
     });
 
-    let title = templateSrv.replaceWithText(this.props.panel.title, this.props.panel.scopedVars);
-    const hiddenPanels = this.props.panel.panels ? this.props.panel.panels.length : 0;
+    const title = templateSrv.replaceWithText(this.props.panel.title, this.props.panel.scopedVars);
+    const count = this.props.panel.panels ? this.props.panel.panels.length : 0;
+    const panels = count === 1 ? 'panel' : 'panels';
 
     return (
       <div className={classes}>
         <a className="dashboard-row__title pointer" onClick={this.toggle}>
           <i className={chevronClass} />
           {title}
-          <span className="dashboard-row__panel_count">({hiddenPanels} hidden panels)</span>
+          <span className="dashboard-row__panel_count">
+            ({count} {panels})
+          </span>
         </a>
         {this.dashboard.meta.canEdit === true && (
           <div className="dashboard-row__actions">
@@ -102,6 +105,11 @@ export class DashboardRow extends React.Component<DashboardRowProps, any> {
             <a className="pointer" onClick={this.delete}>
               <i className="fa fa-trash" />
             </a>
+          </div>
+        )}
+        {this.state.collapsed === true && (
+          <div className="dashboard-row__toggle-target" onClick={this.toggle}>
+            &nbsp;
           </div>
         )}
         <div className="dashboard-row__drag grid-drag-handle" />

@@ -43,7 +43,7 @@ export class PrefsControlCtrl {
 
 var template = `
 <form name="ctrl.prefsForm" class="section gf-form-group">
-  <h3 class="page-heading">偏好设置</h3>
+  <h3 class="page-heading">偏好</h3>
 
   <div class="gf-form">
     <span class="gf-form-label width-11">UI主题</span>
@@ -56,7 +56,7 @@ var template = `
     <span class="gf-form-label width-11">
       主页仪表板
       <info-popover mode="right-normal">
-        没有找到你想要的仪表盘？ 首先收藏它，然后它会出现在这个选择框中。
+        找不到你想要的仪表板？ 首先加注星标，然后它应出现在此选择框中。
       </info-popover>
     </span>
     <dashboard-selector class="gf-form-select-wrapper max-width-20" model="ctrl.prefs.homeDashboardId">
