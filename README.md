@@ -17,6 +17,8 @@ email：w958660278@163.com
 
 个人网站：[https://wanghualong.cn][2]
 
+QQ群： Grafana交流群 921235002
+
 
 ## 当前Grafana版本
 
